@@ -9,7 +9,12 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Agregar extends JPanel {
 
@@ -22,6 +27,7 @@ public class Agregar extends JPanel {
 	private JTextField txtNombre;
 
 	public Agregar() {
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30,0,0,0,30,0};
 		gridBagLayout.rowHeights = new int[]{30,0, 0,0,0,84,30,0};
@@ -89,7 +95,19 @@ public class Agregar extends JPanel {
 		gbc_cbGenero.gridy = 4;
 		add(cbGenero, gbc_cbGenero);
 		
+		agregarGeneros(cbGenero);
+		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(comprobacionDeCampos(txtNombre,cbGenero)) {
+					// campos llenos
+				}else {
+					// campo/s vacio/s
+				}
+			}
+		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.gridwidth = 2;
 		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
@@ -97,6 +115,20 @@ public class Agregar extends JPanel {
 		gbc_btnAceptar.gridy = 5;
 		add(btnAceptar, gbc_btnAceptar);
 		
+	}
+	public static void agregarGeneros(JComboBox<Genero> cbGeneros) {
+		cbGeneros.addItem(new Genero("Seleccione un genero"));
+		cbGeneros.addItem(new Genero("Terror"));
+		cbGeneros.addItem(new Genero("Accion"));
+		cbGeneros.addItem(new Genero("Suspenso"));
+		cbGeneros.addItem(new Genero("Romantica"));
+	}
+	public static boolean comprobacionDeCampos(JTextField txtNombre,JComboBox<Genero> cbGeneros) {
+		boolean valido = false;
+		if(!txtNombre.getText().trim().isEmpty() && cbGeneros.getSelectedIndex() != 0) {
+			valido = true;
+		}
+		return valido;
 	}
 		
 }
