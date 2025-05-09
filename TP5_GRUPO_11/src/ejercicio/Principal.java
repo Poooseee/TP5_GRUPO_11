@@ -40,24 +40,19 @@ public class Principal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setTitle("TP5_GRUPO_11");
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
+		//Creas la menu bar
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
+		//Creas el menu
 		JMenu mnPeliculas = new JMenu("Peliculas");
 		menuBar.add(mnPeliculas);
 
+		//Creas Item AGREGAR, configuras el listener y lo agregas al menu
 		JMenuItem mntmAgregar = new JMenuItem("Agregar");
 		mnPeliculas.add(mntmAgregar);
 
-		JMenuItem mntmListar = new JMenuItem("Listar");
-		mnPeliculas.add(mntmListar);
-		
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -72,5 +67,19 @@ public class Principal extends JFrame {
 				
 			}
 		});
+		
+		mnPeliculas.add(mntmAgregar);
+		
+		//Creas Item Listar, configuras el listener y lo agregas al menu
+		JMenuItem mntmListar = new JMenuItem("Listar");
+		mnPeliculas.add(mntmListar);
+		
+		/*CONFIGURAR LISTENER Y AGREGAR AL MENU CON ADD*/
+		
+		
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+
 	}
 }
