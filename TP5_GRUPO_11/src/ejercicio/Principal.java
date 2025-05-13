@@ -74,6 +74,17 @@ public class Principal extends JFrame {
 		
 		//Creas Item Listar, configuras el listener y lo agregas al menu
 		JMenuItem mntmListar = new JMenuItem("Listar");
+		mntmListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane.removeAll();
+				
+				Agregar panel = new Agregar();
+
+				contentPane.add(panel);
+				contentPane.repaint();
+				contentPane.revalidate();
+			}
+		});
 		mnPeliculas.add(mntmListar);
 		
 		/*CONFIGURAR LISTENER Y AGREGAR AL MENU CON ADD*/
