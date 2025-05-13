@@ -27,7 +27,8 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal frame = new Principal();
+					DefaultListModel<Pelicula> lista = new DefaultListModel<Pelicula>();
+					Principal frame = new Principal(lista);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,9 +40,9 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal() {
+	public Principal(DefaultListModel<Pelicula> lista) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 450);
 		setTitle("TP5_GRUPO_11");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

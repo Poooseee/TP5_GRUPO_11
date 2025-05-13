@@ -15,11 +15,13 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class Agregar extends JPanel {
 
 	JLabel lblPanelParaAgregar;
 	JLabel lblID;
+	JLabel lblError;
 	/**
 	 * 
 	 */
@@ -95,16 +97,28 @@ public class Agregar extends JPanel {
 		gbc_cbGenero.gridy = 4;
 		add(cbGenero, gbc_cbGenero);
 		
+		
 		agregarGeneros(cbGenero);
+		
+		lblError = new JLabel("Debe completar los campos");
+		lblError.setForeground(new Color(255, 0, 0));
+		GridBagConstraints gbc_lblError = new GridBagConstraints();
+		gbc_lblError.gridwidth = 2;
+		gbc_lblError.insets = new Insets(0, 0, 0, 5);
+		gbc_lblError.gridx = 2;
+		gbc_lblError.gridy = 6;
+		add(lblError, gbc_lblError);
+		lblError.setVisible(false);
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(comprobacionDeCampos(txtNombre,cbGenero)) {
-					// campos llenos
+					lblError.setVisible(false);
+					// campos lleno
 				}else {
-					// campo/s vacio/s
+					lblError.setVisible(true);
 				}
 			}
 		});
@@ -114,6 +128,7 @@ public class Agregar extends JPanel {
 		gbc_btnAceptar.gridx = 2;
 		gbc_btnAceptar.gridy = 5;
 		add(btnAceptar, gbc_btnAceptar);
+		
 		
 	}
 	public static void agregarGeneros(JComboBox<Genero> cbGeneros) {
