@@ -39,8 +39,4 @@ public class Pelicula {
 		this.genero = genero;
 	}
 
-	@Override
-	public String toString() {
-		return "Pelicula: " + id + " - " + nombre + " - " + genero.toString();
-	}
 }
