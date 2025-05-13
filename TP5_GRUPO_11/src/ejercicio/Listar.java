@@ -8,24 +8,28 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JList;
 import java.awt.Insets;
+import java.security.PublicKey;
+
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+
 import java.awt.Font;
+import java.awt.FlowLayout;
+import javax.swing.AbstractListModel;
 
 public class Listar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
 	public Listar() {
-		setLayout(null);
+		setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblPeliculas = new JLabel("Peliculas");
+		JLabel lblPeliculas = new JLabel("Peliculas  ");
 		lblPeliculas.setFont(new Font("Yu Gothic", Font.PLAIN, 14));
-		lblPeliculas.setBounds(48, 130, 67, 24);
-		add(lblPeliculas);
+		add(lblPeliculas, BorderLayout.WEST);
 		
 		JList list = new JList();
-		list.setBounds(158, 47, 220, 200);
-		add(list);
-
+		add(list, BorderLayout.CENTER);
+		
 	}
 }
