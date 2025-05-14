@@ -12,8 +12,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import ejercicio.Agregar;
-import ejercicio.Listar;
 
 public class Principal extends JFrame {
 
@@ -65,7 +63,7 @@ public class Principal extends JFrame {
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
-				Agregar panel = new Agregar();
+				Agregar panel = new Agregar(lista);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();

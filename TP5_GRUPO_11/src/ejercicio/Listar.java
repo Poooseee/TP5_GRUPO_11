@@ -20,6 +20,7 @@ import javax.swing.AbstractListModel;
 public class Listar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+
 	
 	public Listar() {
 		setLayout(new BorderLayout(0, 0));

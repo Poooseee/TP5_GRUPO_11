@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -22,13 +23,14 @@ public class Agregar extends JPanel {
 	JLabel lblPanelParaAgregar;
 	JLabel lblID;
 	JLabel lblError;
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 
-	public Agregar() {
+	public Agregar(DefaultListModel<Pelicula> modelo) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30,0,0,0,30,0};
@@ -116,6 +118,9 @@ public class Agregar extends JPanel {
 				
 				if(comprobacionDeCampos(txtNombre,cbGenero)) {
 					lblError.setVisible(false);
+					
+				modelo.addElement(crearYcargarPelicula(txtNombre,cbGenero));
+				
 					// campos lleno
 				}else {
 					lblError.setVisible(true);
@@ -144,6 +149,12 @@ public class Agregar extends JPanel {
 			valido = true;
 		}
 		return valido;
+	}
+	public static Pelicula crearYcargarPelicula(JTextField txtNombre,JComboBox<Genero> cbGenero) {
+		Pelicula peli = new Pelicula();
+		peli.setNombre(txtNombre.getText());
+		peli.setGenero((Genero)cbGenero.getSelectedItem());
+		return peli;
 	}
 		
 }
