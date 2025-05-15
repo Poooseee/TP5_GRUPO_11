@@ -20,6 +20,7 @@ import java.awt.Color;
 
 public class Agregar extends JPanel {
 
+	private static int contador = 1;
 	JLabel lblPanelParaAgregar;
 	JLabel lblID;
 	JLabel lblError;
@@ -133,6 +134,7 @@ public class Agregar extends JPanel {
 		gbc_btnAceptar.gridx = 2;
 		gbc_btnAceptar.gridy = 5;
 		add(btnAceptar, gbc_btnAceptar);
+		lblID.setText(String.valueOf(contador));
 		
 		
 	}
@@ -152,6 +154,7 @@ public class Agregar extends JPanel {
 	}
 	public static Pelicula crearYcargarPelicula(JTextField txtNombre,JComboBox<Genero> cbGenero) {
 		Pelicula peli = new Pelicula();
+		peli.setId(contador);
 		peli.setNombre(txtNombre.getText());
 		peli.setGenero((Genero)cbGenero.getSelectedItem());
 		return peli;

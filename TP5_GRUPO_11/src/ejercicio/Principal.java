@@ -1,5 +1,6 @@
 package ejercicio;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ public class Principal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private DefaultListModel<Pelicula> lista;
 
 	/**
 	 * Launch the application.
@@ -25,7 +27,7 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DefaultListModel<Pelicula> lista = new DefaultListModel<Pelicula>();
+					DefaultListModel<Pelicula> lista = new DefaultListModel<>();
 					Principal frame = new Principal(lista);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -40,9 +42,11 @@ public class Principal extends JFrame {
 	 */
 	public Principal(DefaultListModel<Pelicula> lista) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.lista = lista;
 		setBounds(100, 100, 450, 450);
 		setTitle("TP5_GRUPO_11");
 		contentPane = new JPanel();
+		contentPane.setLayout(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -63,7 +67,8 @@ public class Principal extends JFrame {
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
-				Agregar panel = new Agregar(lista);
+				Agregar panel = new Agregar(Principal.this.lista);
+				contentPane.add(panel, BorderLayout.CENTER);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -76,6 +81,7 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
 				Listar panel = new Listar();
+				contentPane.add(panel, BorderLayout.CENTER);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();

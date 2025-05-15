@@ -38,6 +38,11 @@ public class Pelicula {
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
+	
+	@Override
+	public String toString() {
+		return "ID: " + id + " - " + nombre + " (" + genero + ")";
+	}
 
 
 }
