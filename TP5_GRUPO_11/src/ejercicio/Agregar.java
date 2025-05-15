@@ -121,7 +121,7 @@ public class Agregar extends JPanel {
 					lblError.setVisible(false);
 					
 				modelo.addElement(crearYcargarPelicula(txtNombre,cbGenero));
-				
+				lblID.setText(Integer.toString(contador));
 					// campos lleno
 				}else {
 					lblError.setVisible(true);
@@ -157,6 +157,9 @@ public class Agregar extends JPanel {
 		peli.setId(contador);
 		peli.setNombre(txtNombre.getText());
 		peli.setGenero((Genero)cbGenero.getSelectedItem());
+		txtNombre.setText("");
+		cbGenero.setSelectedIndex(0);
+		contador++;
 		return peli;
 	}
 		

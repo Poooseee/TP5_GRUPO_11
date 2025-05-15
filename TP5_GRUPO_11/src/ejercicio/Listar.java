@@ -9,6 +9,8 @@ import java.awt.GridBagConstraints;
 import javax.swing.JList;
 import java.awt.Insets;
 import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -22,7 +24,7 @@ public class Listar extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	
-	public Listar() {
+	public Listar(DefaultListModel<Pelicula> modelo) {
 		setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblPeliculas = new JLabel("Peliculas  ");
@@ -31,6 +33,20 @@ public class Listar extends JPanel {
 		
 		JList list = new JList();
 		add(list, BorderLayout.CENTER);
-		
+	
+		list.setModel(OrdenarAlfabeticamente(modelo));
+	}
+	
+	public DefaultListModel<Pelicula> OrdenarAlfabeticamente(DefaultListModel<Pelicula> lista){
+		ArrayList<Pelicula> elementos = new ArrayList<>();
+		for (int i = 0; i < lista.getSize(); i++) {
+            elementos.add(lista.getElementAt(i));
+        }
+        Collections.sort(elementos);
+        lista.clear();
+        for (Pelicula elemento : elementos) {
+            lista.addElement(elemento);
+        }
+		return lista;
 	}
 }

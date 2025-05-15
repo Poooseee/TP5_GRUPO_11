@@ -67,7 +67,7 @@ public class Principal extends JFrame {
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
-				Agregar panel = new Agregar(Principal.this.lista);
+				Agregar panel = new Agregar(lista);
 				contentPane.add(panel, BorderLayout.CENTER);
 				contentPane.add(panel);
 				contentPane.repaint();
@@ -80,7 +80,7 @@ public class Principal extends JFrame {
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
-				Listar panel = new Listar();
+				Listar panel = new Listar(lista);
 				contentPane.add(panel, BorderLayout.CENTER);
 				contentPane.add(panel);
 				contentPane.repaint();

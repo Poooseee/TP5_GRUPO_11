@@ -1,6 +1,6 @@
 package ejercicio;
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula>{
 	private int id;
 	private String nombre;
 	private Genero genero;
@@ -41,8 +41,11 @@ public class Pelicula {
 	
 	@Override
 	public String toString() {
-		return "ID: " + id + " - " + nombre + " (" + genero + ")";
+		return "ID: " + id + " - " + "Titulo: " + nombre + " - Genero: " + genero;
 	}
 
-
+	@Override
+	public int compareTo(Pelicula otraP) {
+        return this.nombre.compareToIgnoreCase(otraP.nombre);
+    }
 }
